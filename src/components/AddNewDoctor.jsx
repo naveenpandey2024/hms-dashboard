@@ -165,7 +165,7 @@ const AddNewDoctor = () => {
                   );
                 })}
               </select>
-              <button type="submit">Register New Doctor</button>
+              <button type="submit" style={{ margin: "0 auto",cursor:"pointer" }}>Register New Doctor</button>
             </div>
           </div>
         </form>
