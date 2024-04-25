@@ -13,7 +13,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/appointment/getall",
+          "https://backend-hms.onrender.com/api/v1/appointment/getall",
           { withCredentials: true }
         );
         setAppointments(data.appointments);
@@ -27,7 +27,7 @@ const Dashboard = () => {
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/appointment/update/${appointmentId}`,
+        `https://backend-hms.onrender.com/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
@@ -58,15 +58,13 @@ const Dashboard = () => {
             <div className="content">
               <div>
                 <p>Hello ,</p>
-                <h5>
-                  {admin &&
-                    `${admin.firstName} ${admin.lastName}`}{" "}
-                </h5>
+                <h5>{admin && `${admin.firstName} ${admin.lastName}`} </h5>
               </div>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Facilis, nam molestias. Eaque molestiae ipsam commodi neque.
-                Assumenda repellendus necessitatibus itaque.
+                You are at the heart of Naveen HealthCare Center operations.
+                This dashboard allows you to manage patient records,
+                appointments, staff, and more—all designed to optimize hospital
+                efficiency and improve patient care.
               </p>
             </div>
           </div>
@@ -125,7 +123,13 @@ const Dashboard = () => {
                           </option>
                         </select>
                       </td>
-                      <td>{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
+                      <td>
+                        {appointment.hasVisited === true ? (
+                          <GoCheckCircleFill className="green" />
+                        ) : (
+                          <AiFillCloseCircle className="red" />
+                        )}
+                      </td>
                     </tr>
                   ))
                 : "No Appointments Found!"}
